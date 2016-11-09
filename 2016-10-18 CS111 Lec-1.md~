@@ -1,0 +1,10 @@
+## COM SCI 111, Lec 10/18/2016, Part 1
+### Inter-process Communication
+provided through system calls, typically requiring activities from both communicating processes, mediated each step by the OS
+**Synchronous IPC**: easier for programmers
+Write blocks (next continue running next instruciton) unitil message delivered; read blocks until a new message is available
+**Asynchronous IPC**: more efficient
+Write returns when system accepts message; required mechanism to learn of errors
+Read returns if no message available; involves mechanism to learn of new messages
+
+`create/destroy an IPC channel --> write/send --> read/receive --> channel content query (how much data in total) --> connection-related query (who are end-points)`

@@ -1,0 +1,27 @@
+## COM SCI 111, Lec 11/03/2016
+### Methods for Synchronization
+**Monitors (Protected classes)**: each monitor *class* has a semaphore; automatically acquired on method invocation and released on method return
+	Being conservative by eliminating parallelism
+	+ Correctness: complete mutual exculsion
+	+ Fairness: semaphore queue prevents starvation
+	- Progress: inter-class dependencies may cause deadlocks
+	- Performance: coarse-grained locking
+	
+**Java synchronized methods**: each *object* has an associated mutex, acquired before calling a *synchronized method*.
+	No thread an enter the object's resources when the object is locked
+	static synchronized methods lock class mutex.
+	- Correctness: depend on developers
+	- Fariness: Priority thread scheduling causes potential starvation
+	+ Progress: safe from single thread deadlocks
+	+ Performance: finer-grained locking
+	
+### Performance Measurement and Analysis
+Quantify, understand and predict system performance
+	compare to other systems; investigate alternatives
+	determine how your system will scale up
+	
+Why performance analysis is hard? Components operate in a complex system:
+	Many components in every process
+	Ongoing competition for all resources
+	System may be too large to replicate in lab, or have non-reproduceable properties
+	Difficulty of making clear/simple assertions

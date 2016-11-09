@@ -1,0 +1,3 @@
+## COM SCI 111, Lec 10/13/2016, Part 2: Synchronization
+### Threads
+*Processes*: have their own resources and distinct address spaces, cannot be shared among them

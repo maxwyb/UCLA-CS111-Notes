@@ -1,0 +1,27 @@
+## COM SCI 111, Lec 11/01/2016
+### Increasing Efficiency for Synchronization
+- Reducing time in critical section
+  Doing memory allocation before taking the lock
+  Doing I/O after releasing the lock
+  Eg. Inserting a new node to a linked list
+  
+- Reducing frequency of entering critical sections
+  Possibly by batch operations
+  Eg. *Sloopy counters*: move most updates to a private resource
+  Alternative approach: do not keep a shared counter, whoever needs that data goes into each thread's private counter and sum it up
+  
+- Remove requirement for full exclusivity
+  Eg. Read/write locks: nly writers require exclusive access but reads are usually much more than writes.
+  
+- Spread requests over more resources
+  *Coarse grained*: one lock for many objects
+  *Fine grained*: one lock per object or sub-pool
+  A few operations may still need to lock multiple objects/pools
+  
+Handling priority inversion problem - *Priority inheritance*: a general solution
+	Temporarily increase the priority of the low-priority task (Eg. the meteorological task). When lock is released, drop its priority back to normal.  
+	
+### Deadlock
+A situation where two entities have each locked some resource, and each needs the other's locked resource to continue. Neither will unlock till they lock both resources; hence neither can ever make progress.
+
+*The Dining Philosopher Problem*: when everyone pick up one fork at the same time, but they have to wait the other fork forever.
