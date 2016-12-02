@@ -1,0 +1,12 @@
+## COM SCI 111, Lec 15/11/2016
+### File Systems Control Structure
+Eg. Problems to deal with: read any blocks in a file, writing a new file, append to a file, etc.
+Sparsely populated files - don't allocate all spaces for a large file at first; allocate space whatever in need instead. 
+In-memory data structure & On-disk data structure pointing to files data [RAM pages & disk blocks]
+	Memory & disk synchronization: dirty & clean blocks
+
+Multiple processes working on the same file; independent or shared file descriptors? (determining independent/shared offset for the file, etc.)
+	```The Unix approach
+	file descriptor [open-file references] -> open file instance descriptors (offset, I-node ptr...) -> inode [in-memory file descriptors] -> dinode [on-disk file descriptors]
+	```
+	

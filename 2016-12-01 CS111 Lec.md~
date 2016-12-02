@@ -1,0 +1,21 @@
+## COM SCI 111, Lec 12/01/2016
+### Remote Data: Introduction
+Goals: transparency (indistinguishable from local files), performance (scalability), cost
+Remote File System - remote storage devices, remote databases
+
+Client/Server Models:
+Peer-to-peer; *Thin client* (which usually has not persistent storage), cloud services
+
+**Remote File Transfer**
+Explicit commands to copy remote files: `scp`, `SFTP`
+implicit remote data transfers: browsers (via HTTP), emails (via IMAP/POP/SMTP)
++ efficient, requires no OS support
+- latency, lacks transparency
+
+**Remote Disk Access**: normal fie system calls work on remote files
+Typical architecutures: SCSI over Fibre Chanel (fast), iSCI (inexpensive, highly scalable) 
+The model for *virtual machines*
++ complete transparency
++ reliability/availability per back-end
+- inefficient fixed partition space allocation for each client; can't support file sharing between client systems
+- message loss causes file system errors

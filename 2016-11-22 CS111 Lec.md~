@@ -1,0 +1,46 @@
+## COM SCI 111, Lec 11/22/2016
+### Authentication: Access Control
+**Access Control List**: OS manages a list of access permission for each protected object
++ Easy to figure out who can access the resource, or change access permissions
+- Hard to know all files that a subject can access
+
+Example - the Unix File System
+	three subjects on list for each file: user, group, other
+	three modes for each subject: read, write, execute
+	the 10th bit: if file represents a directory
+
+**Capabilities**: each subject keeps a set of data items that specify his allowable accesses; OS performs capability checking before subject accesses a file
+	data structure of capability (linked list) stored in OS space
++ Easy to know all files that a subject can access
++ Potentially faster than acess control list
++ Easy model to transfer priviledges
+  (give a potentially malicious scirpt a limited subset of capabilities; rather than in Acess control list, it would have all permissions same as the user)
+- Hard to figure out who can access one resource
+- Need cryptographic methods to prevent forgery, in network environment
+
+Example - the Unix File System: file descriptor understood as a capability for a subject
+
+OS enforcement of access policies:
+Grant resource access directly: resource manager maps resource into process' address space
+Grant resource access indirectly: resource manager returns a capability; requires capability checking every time the process accessing that resource
+
+### Cryptography: Introduction
+transforming bit patterns in controlled ways to obtain security advantages
+*encryption/decryption*, *cryptosystem*, *plaintext, ciphertext*
+*cipher*: rules for transformation from plaintext to ciphertext;
+*cryptosystem*: combination of encryption and decryption algorithm
+
+Most cryptographic algorithms use a *key* to perform encryption and decryption, which should be kept secret!
+
+**Symmetric Cryptosystems**
++ more trusted and effective algorithms than asymmetric key systems
+- encryption and authentication performed in a single operation: hard to do only one thing instead of both
+- no centralized authority/server required: make repudiaton hard
+
+*Data Encryption Standard (DES)*, *Advanced Encryption Standard (AES)*
+
+*Brute force attacks*: try every possible key until one works
+DES: 56 bit keys; AES: 128/256 bit keys
+
+**Asymmetric Cryptosystems: Public key cryptography**
+
